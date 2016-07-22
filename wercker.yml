@@ -1,15 +1,13 @@
 box: docker
-
 build:
   steps:
+    - bundle-install
     - script:
         name: build docker images
         code: docker build -t massat/ubuntu-base ubuntu/base
-    - wercker/bundle-install@2.0.1
     - script:
         name: exec rspec
         code: bundle exec rspec
-
 deploy:
     - script:
         name: login to docker hub
