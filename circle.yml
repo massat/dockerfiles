@@ -6,6 +6,7 @@ dependencies:
   override:
     - docker info
     - docker build -t massat/ubuntu-base ubuntu/base
+    - docker build -t massat/ubuntu-nginx ubuntu/nginx
 
 test:
   override:
@@ -18,3 +19,4 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push massat/ubuntu-base
+      - docker push massat/ubuntu-nginx
