@@ -1,0 +1,15 @@
+box: wercker-labs/docker
+
+build:
+  steps:
+    - script:
+        code: docker build -t massat/ubuntu-base ubuntu/base
+    - wercker/bundle-install@2.0.1
+    - script:
+        code: bundle exec rspec
+
+deploy:
+    - script:
+        code: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - script:
+        code: docker push massat/ubuntu-base
