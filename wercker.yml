@@ -1,0 +1,5 @@
+box: docker
+
+build:
+  steps:
+    - bundle-install
